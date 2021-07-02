@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import api from '../../api/api';
-import history from '../../pages/routes/history';
+import api from '../../api/Api';
+import history from '../../routes/history';
 
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);

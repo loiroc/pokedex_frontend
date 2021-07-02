@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Context } from '../../contexts/AuthContext';
+import { Context } from '../contexts/AuthContext';
 
-import Home from '../Home';
+import Login from '../pages/Login';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { loading, authenticated } = useContext(Context);
@@ -22,9 +22,9 @@ function CustomRoute({ isPrivate, ...rest }) {
 export default function Routes() {
   return (
     <Switch>
-      <CustomRoute exact path="/" component={Home} />
-      <CustomRoute exact path="/login" component={Home} />
-      <CustomRoute isPrivate exact path="/home" component={Home} />
+      <CustomRoute exact path="/" component={Login} />
+      <CustomRoute exact path="/login" component={Login} />
+      <CustomRoute isPrivate exact path="/home" component={Login} />
     </Switch>
   );
 }

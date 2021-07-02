@@ -1,0 +1,40 @@
+body {
+    background-image: url("../assets/forest.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Login {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login .container {
+    top: 25%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 18rem;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.Login Form {
+    width: 250px;
+}
+
+.Login Button {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+.Login Label {
+    font-size: 12px;
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 
-import Routes from './pages/routes/routes';
-import history from './pages/routes/history';
+import Routes from './routes/routes';
+import history from './routes/history';
 
 import { AuthProvider } from './contexts/AuthContext';
 
