@@ -1,0 +1,52 @@
+.Card .card {
+    display: flex;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 400px;
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 0px;
+    transition: all .2s ease-in-out;
+}
+
+.Card:hover .card, .Card:hover #pokemon {
+    transform: scale(1.05);
+}
+
+.Card #pokemon {
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    width: 9%;
+    margin-left: 250px;
+    margin-top: 20px;
+}
+
+.Card #types {
+    display: flex;
+    margin-left: 20px;
+}
+
+.Card p {
+    margin-right: 8px;
+    color: white;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Card h1 {
+    color: #282828;
+    font-weight: bolder;
+    margin-left: 20px;
+}
+
+.Card h4 {
+    color: #404040;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: -5px;
+}
