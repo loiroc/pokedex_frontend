@@ -17,7 +17,7 @@ function Home() {
   const [searchData, setSearchData] = useState([]);
 
   function fetchData() {
-    axios.get(`http://192.168.99.106:3002/pokemon`).then((results) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/pokemon`).then((results) => {
       setPokemonData(results.data);
       setSearchData(results.data);
       setLoading(false);
