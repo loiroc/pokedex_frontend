@@ -3,7 +3,6 @@ import "../styles/Card.css";
 import "../styles/Types.css";
 
 function Card({ id, name, image, types, onClick }) {
-    
   function upperFirstChar(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

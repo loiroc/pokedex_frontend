@@ -31,66 +31,69 @@ function Home() {
 
   return (
     <div className="Home">
-      {showPopup ? (<div id="about">
-        <About pokemon={selected}/>
-        <div className="btn">
-          <Button
-            variant="dark"
-            onClick={() => {
-              setSelected([]);
-              setShowPopup(false);
-            }}
-          >
-            <ArrowBackIcon /> Voltar
-          </Button>
-        </div>
-      </div>) :
-     ( <div id="home">
-        <div className="logo">
-          <img alt="Pokemon" src="images/logo.png" />
-        </div>
-        {!loading && (
-          <div className="top">
-            <SearchIcon className="SearchIcon" />
-            <Form.Control
-              style={{ width: "50%" }}
-              type="text"
-              placeholder="Pesquise por um Pokemon"
-              onChange={(e) => {
-                setSearchData(
-                  pokemonData.filter((pokemon) => {
-                    return pokemon.name.includes(e.target.value);
-                  })
-                );
+      {showPopup ? (
+        <div id="about">
+          <About pokemon={selected} />
+          <div className="btn">
+            <Button
+              variant="dark"
+              onClick={() => {
+                setSelected([]);
+                setShowPopup(false);
               }}
-            />
+            >
+              <ArrowBackIcon /> Voltar
+            </Button>
           </div>
-        )}
-        {loading ? (
-          <Pokeball />
-        ) : searchData.length > 0 ? (
-          <div className="container">
-            {searchData.map((pokemon) => {
-              return (
-                <Card
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  image={pokemon.image}
-                  types={pokemon.types}
-                  onClick={() => {
-                    setSelected(pokemon);
-                    setShowPopup(true);
-                  }}
-                />
-              );
-            })}
+        </div>
+      ) : (
+        <div id="home">
+          <div className="logo">
+            <img alt="Pokemon" src="images/logo.png" />
           </div>
-        ) : (
-          <div id="center">
-            <h2>Nenhum resultado encontrado</h2>
-          </div>
-        )}
-      </div>)}
+          {!loading && (
+            <div className="top">
+              <SearchIcon className="SearchIcon" />
+              <Form.Control
+                style={{ width: "50%" }}
+                type="text"
+                placeholder="Pesquise por um Pokemon"
+                onChange={(e) => {
+                  setSearchData(
+                    pokemonData.filter((pokemon) => {
+                      return pokemon.name.includes(e.target.value);
+                    })
+                  );
+                }}
+              />
+            </div>
+          )}
+          {loading ? (
+            <Pokeball />
+          ) : searchData.length > 0 ? (
+            <div className="container">
+              {searchData.map((pokemon) => {
+                return (
+                  <Card
+                    id={pokemon.id}
+                    name={pokemon.name}
+                    image={pokemon.image}
+                    types={pokemon.types}
+                    onClick={() => {
+                      setSelected(pokemon);
+                      setShowPopup(true);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div id="center">
+              <h2>Nenhum resultado encontrado</h2>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
