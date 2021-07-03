@@ -9,3 +9,34 @@
     margin-bottom: 50px;
 }
 
+.Home .top {
+    display: flex;
+    margin-top: 80px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -120px;
+}
+
+.Home .logo {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -80px;
+}
+
+.Home #center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.Home img {
+    width: 20%;
+}
+
+.Home .SearchIcon {
+    margin-right: 20px;
+}
