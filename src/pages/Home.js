@@ -20,6 +20,7 @@ function Home() {
   const [searchData, setSearchData] = useState([]);
   const [selected, setSelected] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [popupLoading, setPopupLoading] = useState(true);
 
   function fetchData() {
     axios.get(`${process.env.REACT_APP_API_URL}/pokemon`).then((results) => {
@@ -32,20 +33,31 @@ function Home() {
   return (
     <div className="Home">
       {showPopup ? (
-        <div id="about">
-          <About pokemon={selected} />
-          <div className="btn">
-            <Button
-              variant="dark"
-              onClick={() => {
-                setSelected([]);
-                setShowPopup(false);
-              }}
-            >
-              <ArrowBackIcon /> Voltar
-            </Button>
+        popupLoading ? (
+          <>
+            <Pokeball />
+            {setTimeout(() => {
+              setPopupLoading(false);
+            }, 500)}
+          </>
+        ) : (
+          <div id="about">
+            <About pokemon={selected} />
+            <div className="btn">
+              <Button
+                variant="dark"
+                onClick={() => {
+                  setSelected([]);
+                  setShowPopup(false);
+                  setPopupLoading(true);
+                  setSearchData(pokemonData);
+                }}
+              >
+                <ArrowBackIcon /> Voltar
+              </Button>
+            </div>
           </div>
-        </div>
+        )
       ) : (
         <div id="home">
           <div className="logo">

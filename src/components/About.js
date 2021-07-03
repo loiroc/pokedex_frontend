@@ -3,9 +3,11 @@ import axios from "axios";
 import "../styles/About.css";
 import "../styles/Types.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import * as ReactBootStrap from "react-bootstrap";
 
 function About(pokemon) {
   const [weaknesses, setWeaknesses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     pokemon.pokemon && getWeaknesses();
@@ -33,6 +35,7 @@ function About(pokemon) {
             return elem.name;
           });
           setWeaknesses(arr);
+          setLoading(false);
         });
     }
   }
@@ -74,13 +77,23 @@ function About(pokemon) {
               </span>
               <span id="more-title">
                 Weaknesses:
-                <span id="more-data">
-                  {weaknesses.map((elem) => {
-                    return (
-                      <p className={`p-${elem}`}>{upperFirstChar(elem)}</p>
-                    );
-                  })}
-                </span>
+                {loading ? (
+                  <ReactBootStrap.Spinner
+                    id="spinner"
+                    animation="border"
+                    variant="gray"
+                    size="sm"
+                    style={{marginLeft: "10px"}}
+                  />
+                ) : (
+                  <span id="more-data">
+                    {weaknesses.map((elem) => {
+                      return (
+                        <p className={`p-${elem}`}>{upperFirstChar(elem)}</p>
+                      );
+                    })}
+                  </span>
+                )}
               </span>
             </div>
           </div>
