@@ -1,0 +1,104 @@
+.About .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.About img {
+    width: 180px;
+}
+.About p {
+    margin-right: 8px;
+    color: white;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.About h1 {
+    font-weight: bolder;
+    font-size: 48px;
+}
+
+.About h5 {
+    color: #404040;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 2px;
+    margin-bottom: -8px;
+}
+
+.About .types {
+    display: flex;
+    
+}
+
+.About .section {
+    display: flex;
+}
+
+.About .stats {    
+    text-align: center;
+    margin-left: 10px;
+}
+
+.About .stats-title {
+    color: black;
+    margin-bottom: -10px;
+}
+
+.About .number {
+    margin-left: -10px;
+}
+
+.About progress {
+    display: flex;
+}
+
+.About .stats-number {
+    color: black;
+    margin-bottom: -10px;
+}
+
+.About .progr {
+    margin-left: -10px;
+    margin-top: 30px;
+}
+
+.About .stats-progress {
+    background-color: #b1ecb1;
+    border-radius: 0px;
+    width: 500px;
+    height: 10px;
+}
+.About .stats-bar {
+    background-color: #5fc85f;
+    border-radius: 0px;
+    width: 100px;
+    height: 10px;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
+.About .more {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.About .more span {
+    color: black;
+}
+
+.About #more-title {
+    font-weight: bold;
+}
+
+.About #more-data {
+    font-weight: 0;
+    display: flex;
+}
+
+.About .cont-stat {
+    margin-top: -50px;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Card.css";
 import "../styles/Types.css";
 
-function Card({ id, name, image, types }) {
+function Card({ id, name, image, types, onClick }) {
     
   function upperFirstChar(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -15,7 +15,7 @@ function Card({ id, name, image, types }) {
   }
 
   return (
-    <div className="Card" key={id}>
+    <div className="Card" key={id} onClick={onClick}>
       <img id="pokemon" alt={`${name}`} src={image} />
       <div className={`card bg-${types[0]}`}>
         <h4>#{mask(id)}</h4>
