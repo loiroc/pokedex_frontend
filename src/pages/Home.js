@@ -18,8 +18,8 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    document.body.style.backgroundImage = ""
-  }, [])
+    document.body.style.backgroundImage = "";
+  }, []);
 
   const { handleLogout } = useContext(Context);
 
@@ -40,8 +40,11 @@ function Home() {
       })
       .then((results) => {
         setPokemonData(results.data);
-        setSearchData(results.data.slice(0, 9));
-        setLoading(false);
+        setSearchData(results.data);
+        setTimeout(() => {
+          setSearchData(results.data.slice(0, 9));
+          setLoading(false);
+        }, 500);
       });
   }
 
@@ -119,7 +122,7 @@ function Home() {
                   setSearchData(pokemonData.slice(0, 9));
                 }}
               >
-                <ArrowBackIcon /> Voltar
+                <ArrowBackIcon /> Go back
               </Button>
             </div>
           </div>
@@ -137,7 +140,7 @@ function Home() {
               <Form.Control
                 style={{ width: "50%" }}
                 type="text"
-                placeholder="Pesquise por um Pokemon"
+                placeholder="Search for a Pokemon"
                 onChange={(e) => {
                   if (e.target.value.length > 0) {
                     setSearchData(
@@ -179,7 +182,7 @@ function Home() {
             </div>
           ) : (
             <div id="center">
-              <h2>Nenhum resultado encontrado</h2>
+              <h2>No results found! </h2>
             </div>
           )}
         </div>

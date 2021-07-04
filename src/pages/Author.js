@@ -66,10 +66,10 @@ function Author() {
           </span>
           <Button
             variant="dark"
-            style={{ marginTop: "20px", width: "80px" }}
+            style={{ marginTop: "20px", width: "120px" }}
             href="/home"
           >
-            Voltar
+            Go back
           </Button>
         </div>
       </div>

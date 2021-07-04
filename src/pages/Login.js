@@ -16,7 +16,6 @@ function Login() {
   const { authenticated, handleLogin } = useContext(Context);
 
   useEffect(() => {
-    setLoading(false)
     if (authenticated) {
         history.push('/home');
     }
@@ -24,7 +23,6 @@ function Login() {
 
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
 
 
     function verifyFields() {
@@ -33,7 +31,6 @@ function Login() {
         }
         if (user && password) { 
             handleLogin(user, password);
-            setLoading(true);
         }        
                 
     }
@@ -48,18 +45,18 @@ function Login() {
   return (
     <div className="Login">
       <div className="container">
-        <p>Seja bem-vindo treinador!</p>
+        <p>Welcome, trainer!</p>
         <Form>
           <Form.Group>
-            <Form.Label>Usuário:</Form.Label>
+            <Form.Label>User:</Form.Label>
             <Form.Control type="email" placeholder="Digite seu usuário" onKeyDown={handleKeyDown} onChange={(e) => {setUser(e.target.value)}} />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Senha:</Form.Label>
+            <Form.Label>Password:</Form.Label>
             <Form.Control type="password" placeholder="Digite sua senha" onKeyDown={handleKeyDown} onChange={(e) => {setPassword(e.target.value)}}/>
           </Form.Group>
-          {loading ? <Button variant="primary" style={{marginTop: "10px"}} onClick={verifyFields}>Entrar</Button> : <Button variant="primary" style={{marginTop: "10px"}} onClick={verifyFields}>Entrar</Button>}
+          <Button variant="primary" style={{marginTop: "10px"}} onClick={verifyFields}>Log in</Button>
         </Form>
       </div>
     </div>
