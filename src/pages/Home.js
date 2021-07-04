@@ -17,6 +17,10 @@ function Home() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    document.body.style.backgroundImage = ""
+  }, [])
+
   const { handleLogout } = useContext(Context);
 
   const [loading, setLoading] = useState(true);
@@ -85,7 +89,7 @@ function Home() {
         <Nav.Item style={{ marginTop: "10px" }}>
           <Nav.Link
             onClick={() => {
-              handleLogout(3);
+              handleLogout();
             }}
           >
             Logout

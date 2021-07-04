@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/Author.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "react-bootstrap/Nav";
@@ -6,8 +6,10 @@ import Button from "react-bootstrap/Button";
 import PhoneIcon from "@material-ui/icons/Phone";
 import MailIcon from "@material-ui/icons/Mail";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import { Context } from "../contexts/AuthContext";
 
 function Author() {
+  const { handleLogout } = useContext(Context);
   return (
     <div className="Author">
       <Nav
@@ -33,7 +35,13 @@ function Author() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item style={{ marginTop: "10px" }}>
-          <Nav.Link>Logout</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Logout
+          </Nav.Link>
         </Nav.Item>
       </Nav>
       <img
