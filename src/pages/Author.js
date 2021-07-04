@@ -33,7 +33,7 @@ function Author() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item style={{ marginTop: "10px" }}>
-          <Nav.Link>Sair</Nav.Link>
+          <Nav.Link>Logout</Nav.Link>
         </Nav.Item>
       </Nav>
       <img

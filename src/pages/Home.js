@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "../styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,11 +10,14 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { Context } from "../contexts/AuthContext";
 
 function Home() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const { handleLogout } = useContext(Context);
 
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
@@ -25,11 +28,17 @@ function Home() {
   const [seeing, setSeeing] = useState(9);
 
   function fetchData() {
-    axios.get(`${process.env.REACT_APP_API_URL}/pokemon`).then((results) => {
-      setPokemonData(results.data);
-      setSearchData(results.data.slice(0, 9));
-      setLoading(false);
-    });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/pokemon`, {
+        headers: {
+          Authorization: `token ${localStorage.getItem("token").split('"')[1]}`,
+        },
+      })
+      .then((results) => {
+        setPokemonData(results.data);
+        setSearchData(results.data.slice(0, 9));
+        setLoading(false);
+      });
   }
 
   function seeMore() {
@@ -74,7 +83,13 @@ function Home() {
           <Nav.Link href="author">About the Developer</Nav.Link>
         </Nav.Item>
         <Nav.Item style={{ marginTop: "10px" }}>
-          <Nav.Link>Sair</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              handleLogout(3);
+            }}
+          >
+            Logout
+          </Nav.Link>
         </Nav.Item>
       </Nav>
       {showPopup ? (

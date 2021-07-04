@@ -29,7 +29,13 @@ function Details(pokemon) {
     if (pokemon && pokemon.pokemon && pokemon.pokemon.types) {
       const type = pokemon.pokemon.types[0];
       axios
-        .get(`${process.env.REACT_APP_API_URL}/weaknesses/${type}`)
+        .get(`${process.env.REACT_APP_API_URL}/weaknesses/${type}`, {
+          headers: {
+            Authorization: `token ${
+              localStorage.getItem("token").split('"')[1]
+            }`,
+          },
+        })
         .then((results) => {
           let arr = results.data.map((elem) => {
             return elem.name;
@@ -83,7 +89,7 @@ function Details(pokemon) {
                     animation="border"
                     variant="gray"
                     size="sm"
-                    style={{marginLeft: "10px"}}
+                    style={{ marginLeft: "10px" }}
                   />
                 ) : (
                   <span id="more-data">
