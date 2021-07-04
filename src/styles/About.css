@@ -1,3 +1,7 @@
+.About {
+    margin-top: -50px;
+}
+
 .About .container {
     display: flex;
     align-items: center;

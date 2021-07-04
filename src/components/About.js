@@ -5,7 +5,7 @@ import "../styles/Types.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
 
-function About(pokemon) {
+function Details(pokemon) {
   const [weaknesses, setWeaknesses] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +42,7 @@ function About(pokemon) {
 
   return (
     <div className="About">
-      {pokemon && pokemon.pokemon ? (
+      {pokemon.pokemon ? (
         <>
           <div className="container">
             <img
@@ -235,4 +235,4 @@ function About(pokemon) {
   );
 }
 
-export default About;
+export default Details;

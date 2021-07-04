@@ -6,9 +6,10 @@ import Pokeball from "../components/Pokeball";
 import Card from "../components/Card";
 import About from "../components/About";
 import Form from "react-bootstrap/Form";
-import SearchIcon from "@material-ui/icons/Search";
 import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 function Home() {
   useEffect(() => {
@@ -21,24 +22,68 @@ function Home() {
   const [selected, setSelected] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [popupLoading, setPopupLoading] = useState(true);
+  const [seeing, setSeeing] = useState(9);
 
   function fetchData() {
     axios.get(`${process.env.REACT_APP_API_URL}/pokemon`).then((results) => {
       setPokemonData(results.data);
-      setSearchData(results.data);
+      setSearchData(results.data.slice(0, 9));
       setLoading(false);
     });
   }
 
+  function seeMore() {
+    if (seeing <= 150) {
+      setSearchData(pokemonData.slice(seeing, seeing + 9));
+      setSeeing(seeing + 9);
+    }
+  }
+
+  function seeLess() {
+    console.log(seeing);
+    if (seeing >= 10) {
+      setSearchData(pokemonData.slice(seeing - 18, seeing - 9));
+      setSeeing(seeing - 9);
+    }
+  }
+
   return (
     <div className="Home">
+      <Nav
+        style={{
+          backgroundColor: "#FFFAFA",
+          boxShadow:
+            "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+        }}
+      >
+        <Nav.Item>
+          <img
+            alt="Pokemon"
+            src="images/logo.png"
+            style={{ width: "100px", marginLeft: "20px", marginRight: "20px" }}
+          />
+        </Nav.Item>
+        <Nav.Item style={{ marginTop: "10px" }}>
+          <Nav.Link style={{ fontWeight: "bold" }} href="/home">
+            Home
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item style={{ marginTop: "10px" }}>
+          <Nav.Link href="author">About the Developer</Nav.Link>
+        </Nav.Item>
+        <Nav.Item style={{ marginTop: "10px" }}>
+          <Nav.Link>Sair</Nav.Link>
+        </Nav.Item>
+      </Nav>
       {showPopup ? (
         popupLoading ? (
           <>
             <Pokeball />
-            {setTimeout(() => {
-              setPopupLoading(false);
-            }, 500)}
+            <div style={{ display: "none" }}>
+              {setTimeout(() => {
+                setPopupLoading(false);
+              }, 500)}
+            </div>
           </>
         ) : (
           <div id="about">
@@ -50,7 +95,7 @@ function Home() {
                   setSelected([]);
                   setShowPopup(false);
                   setPopupLoading(true);
-                  setSearchData(pokemonData);
+                  setSearchData(pokemonData.slice(0, 9));
                 }}
               >
                 <ArrowBackIcon /> Voltar
@@ -60,23 +105,35 @@ function Home() {
         )
       ) : (
         <div id="home">
-          <div className="logo">
-            <img alt="Pokemon" src="images/logo.png" />
-          </div>
           {!loading && (
             <div className="top">
-              <SearchIcon className="SearchIcon" />
+              <ArrowBackIcon
+                onClick={() => {
+                  seeLess();
+                }}
+                style={{ marginRight: "10px", cursor: "pointer" }}
+              />
               <Form.Control
                 style={{ width: "50%" }}
                 type="text"
                 placeholder="Pesquise por um Pokemon"
                 onChange={(e) => {
-                  setSearchData(
-                    pokemonData.filter((pokemon) => {
-                      return pokemon.name.includes(e.target.value);
-                    })
-                  );
+                  if (e.target.value.length > 0) {
+                    setSearchData(
+                      pokemonData.filter((pokemon) => {
+                        return pokemon.name.includes(e.target.value);
+                      })
+                    );
+                  } else {
+                    setSearchData(pokemonData.slice(0, 9));
+                  }
                 }}
+              />
+              <ArrowForwardIcon
+                onClick={() => {
+                  seeMore();
+                }}
+                style={{ marginLeft: "10px", cursor: "pointer" }}
               />
             </div>
           )}
