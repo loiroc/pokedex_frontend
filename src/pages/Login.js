@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Image from "../assets/forest.jpg"
 
 function Login() {
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${Image})`
+  }, [])
+
   return (
     <div className="Login">
       <div className="container">
@@ -19,7 +25,7 @@ function Login() {
             <Form.Label>Senha:</Form.Label>
             <Form.Control type="password" placeholder="Digite sua senha" />
           </Form.Group>
-          <Button variant="primary">Entrar</Button>
+          <Button variant="primary" style={{marginTop: "10px"}}>Entrar</Button>
         </Form>
       </div>
     </div>

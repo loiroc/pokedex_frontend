@@ -5,7 +5,7 @@ import { Context } from '../contexts/AuthContext';
 
 import Login from '../pages/Login';
 import Home from '../pages/Home';
-import Info from '../components/About';
+import Author from '../pages/Author';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { loading, authenticated } = useContext(Context);
@@ -27,7 +27,7 @@ export default function Routes() {
       <CustomRoute exact path="/" component={Login} />
       <CustomRoute exact path="/login" component={Login} />
       <CustomRoute exact path="/home" component={Home} />
-      <CustomRoute exact path="/info" component={Info} />
+      <CustomRoute exact path="/author" component={Author} />
     </Switch>
   );
 }
