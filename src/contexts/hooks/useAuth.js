@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import api from "../../api/Api";
 import history from "../../routes/history";
-import qs from "qs";
 
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
