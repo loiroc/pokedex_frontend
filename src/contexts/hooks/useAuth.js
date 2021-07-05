@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import api from "../../api/Api";
+import api from "../../api";
 import history from "../../routes/history";
 
 export default function useAuth() {
