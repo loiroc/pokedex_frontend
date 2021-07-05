@@ -7,7 +7,7 @@ Please add env variables (.env file on the root folder) to the application works
 
 Credentials to log in:
 - user: admin / password: admin
-- 
+
 ### Version
 
 1.0.0
