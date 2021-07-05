@@ -220,17 +220,11 @@ function Details(pokemon) {
                           return i.stat === "speed";
                         })
                         .map((i) => {
-                          return `${i.lvl * 5}px`;
+                          return `${i.lvl * 5 > 100 ? '500' : i.lvl * 5}px`;
                         }),
                   }}
                 ></p>
               </p>
-            </div>
-            <div className="stats number">
-              <p className="stats-number">100</p>
-              <p className="stats-number">100</p>
-              <p className="stats-number">100</p>
-              <p className="stats-number">100</p>
             </div>
           </div>
         </>
