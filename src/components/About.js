@@ -169,7 +169,7 @@ function Details(pokemon) {
                           return i.stat === "hp";
                         })
                         .map((i) => {
-                          return `${i.lvl * 5}px`;
+                          return `${i.lvl * 5 > 100 ? '500' : i.lvl * 5}px`;
                         }),
                   }}
                 ></p>
@@ -186,7 +186,7 @@ function Details(pokemon) {
                           return i.stat === "attack";
                         })
                         .map((i) => {
-                          return `${i.lvl * 5}px`;
+                          return `${i.lvl * 5 > 100 ? '500' : i.lvl * 5}px`;
                         }),
                   }}
                 ></p>
@@ -203,7 +203,7 @@ function Details(pokemon) {
                           return i.stat === "defense";
                         })
                         .map((i) => {
-                          return `${i.lvl * 5}px`;
+                          return `${i.lvl * 5 > 100 ? '500' : i.lvl * 5}px`;
                         }),
                   }}
                 ></p>
